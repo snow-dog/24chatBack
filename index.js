@@ -1,24 +1,23 @@
 "use strict";
-exports.__esModule = true;
-// import { createServer } from 'http'
-// import { Server } from 'socket.io'
-var express_1 = require("express");
-var App = function () {
-    var port = 3000;
-    var app = express_1["default"]();
-    app.set("port", process.env.PORT || 3000);
-    var http = require("http").Server(app);
-    // simple '/' endpoint sending a Hello World
-    // response
-    app.get("/", function (req, res) {
-        res.send("hello world!!");
-    });
-    app.listen(port, function () {
-        console.log("\u26A1\uFE0F[server]: Server is running at https://localhost:" + port);
-    });
-    // start our simple server up on localhost:3000
-    // const server = http.listen(port, function() {
-    //   console.log(`listening on *: ${port}`);
-    // })
+// import express from 'express';
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-App();
+Object.defineProperty(exports, "__esModule", { value: true });
+// const app = express();
+// app.get('/', (req, res) => {
+//     res.send('Well done!');
+// })
+// app.listen(3000, () => {
+//     console.log('The application is listening on port 3000!');
+// })
+var express_1 = __importDefault(require("express"));
+var http_1 = __importDefault(require("http"));
+var app = express_1.default();
+var server = http_1.default.createServer(app);
+app.get('/', function (req, res) {
+    res.send('<h1>Hello world</h1>');
+});
+server.listen(3000, function () {
+    console.log('listening on *:3000');
+});

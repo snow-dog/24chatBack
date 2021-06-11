@@ -1,28 +1,25 @@
-// import { createServer } from 'http'
-// import { Server } from 'socket.io'
-import express from 'express'
+// import express from 'express';
 
-const App = () => {
-  const port = 3000
-  
-  const app = express()
-  app.set("port", process.env.PORT || 3000)
+// const app = express();
 
-  const http = require("http").Server(app)
+// app.get('/', (req, res) => {
+//     res.send('Well done!');
+// })
 
-  // simple '/' endpoint sending a Hello World
-  // response
-  app.get("/", (req: any, res: any) => {
-    res.send("hello world!!")
-  })
-  app.listen(port, () => {
-    console.log(`⚡️[server]: Server is running at https://localhost:${port}`);
-  })
+// app.listen(3000, () => {
+//     console.log('The application is listening on port 3000!');
+// })
 
-  // start our simple server up on localhost:3000
-  // const server = http.listen(port, function() {
-  //   console.log(`listening on *: ${port}`);
-  // })
-}
+import express from 'express';
+import http from 'http';
 
-App()
+const app = express();
+const server = http.createServer(app);
+
+app.get('/', (req, res) => {
+  res.send('<h1>Hello world</h1>');
+});
+
+server.listen(3000, () => {
+  console.log('listening on *:3000');
+});
